@@ -6,12 +6,12 @@ python-multipart==0.0.6
 
 # Database
 sqlalchemy==2.0.25
-# psycopg2-binary==2.9.9 (uncomment if using PostgreSQL)
+# psycopg2-binary==2.9.9  (uncomment if using PostgreSQL)
 alembic==1.13.1
 
 # ML / NLP
 transformers==4.36.2
-torch==2.9.0          # Changed from 2.1.2 to 2.9.0 (compatible with Render)
+torch==2.9.0
 sentencepiece==0.1.99
 accelerate==0.25.0
 
