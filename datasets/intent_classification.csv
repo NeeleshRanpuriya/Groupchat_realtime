@@ -1,0 +1,82 @@
+# Intent Classification Dataset
+
+# Mapping messages to communication intents
+
+id,message,intent,confidence
+1,"What time does the meeting start?",question,0.95
+2,"I'm very disappointed with this service",complaint,0.90
+3,"You're an absolute idiot",insult,0.98
+4,"I'll make sure you regret this",threat,0.95
+5,"Thank you so much for your help!",positive,0.92
+6,"That's not entirely accurate",disagreement,0.85
+7,"The weather is nice today",neutral,0.80
+8,"How do I reset my password?",question,0.93
+9,"This never works properly",complaint,0.88
+10,"Nobody cares what you think",insult,0.90
+11,"You better watch your back",threat,0.92
+12,"Excellent work on the presentation!",positive,0.95
+13,"I don't think that's the best approach",disagreement,0.87
+14,"I went to the store yesterday",neutral,0.75
+15,"Where can I find more information?",question,0.96
+16,"I'm sick of these constant problems",complaint,0.89
+17,"You're completely useless",insult,0.97
+18,"If you don't stop, you'll regret it",threat,0.94
+19,"This made my day, thank you!",positive,0.91
+20,"Actually, I see it differently",disagreement,0.86
+21,"The meeting is at 3 PM",neutral,0.78
+22,"Can you help me understand this?",question,0.92
+23,"This is always broken",complaint,0.87
+24,"What a stupid comment",insult,0.93
+25,"I'll find you and make you pay",threat,0.96
+26,"Amazing job, keep it up!",positive,0.94
+27,"I have to disagree with that point",disagreement,0.88
+28,"It's currently raining outside",neutral,0.82
+29,"Why isn't this feature available?",question,0.89
+30,"I'm frustrated with the lack of response",complaint,0.85
+31,"You're a complete waste of space",insult,0.95
+32,"I'm going to destroy your reputation",threat,0.93
+33,"Love this approach, brilliant!",positive,0.92
+34,"That's incorrect, here's why",disagreement,0.84
+35,"I had coffee this morning",neutral,0.77
+36,"Could you clarify your statement?",question,0.91
+37,"This is unacceptable quality",complaint,0.86
+38,"Get lost, loser",insult,0.96
+39,"Watch out, you're in danger",threat,0.90
+40,"Fantastic contribution to the team!",positive,0.93
+41,"Tu pagal hai kya",insult,0.90
+42,"Tu bilkul useless hai",insult,0.92
+43,"Teri aukat nahi hai",insult,0.93
+44,"Chup kar bewakoof",insult,0.95
+45,"Tu chutiya hai",insult,0.98
+46,"Tu MC hai",insult,0.97
+47,"Tu BC hai",insult,0.97
+48,"Saale harami",insult,0.96
+49,"Kameene sudhar ja",insult,0.91
+50,"Gandu kahin ka",insult,0.98
+
+# Short forms / coded abuse
+51,"mc",insult,0.85
+52,"bc",insult,0.85
+53,"bsdk",insult,0.97
+54,"bkl",insult,0.96
+55,"g@ndu",insult,0.94
+56,"ch*tiya",insult,0.95
+57,"c#utiya",insult,0.95
+58,"madarchod",insult,0.99
+59,"behenchod",insult,0.99
+60,"teri maa ki",insult,0.98
+
+# Hinglish abusive
+61,"You are chutiya",insult,0.96
+62,"Stop bakchodi",insult,0.90
+63,"Tera dimaag kharab hai",insult,0.91
+64,"Tu kya cheez hai be",insult,0.88
+65,"Chal nikal yaha se",insult,0.89
+
+# Threat in Hindi
+66,"Main tujhe dekh lunga",threat,0.92
+67,"Tu bach ke reh",threat,0.93
+68,"Tujhe zinda nahi chhodunga",threat,0.97
+69,"Ab tu gaya",threat,0.94
+70,"Teri khair nahi",threat,0.91
+

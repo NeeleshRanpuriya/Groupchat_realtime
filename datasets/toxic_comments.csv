@@ -1,0 +1,77 @@
+
+# Sample Toxic Comments Dataset
+# Based on Jigsaw Toxic Comment Classification Challenge
+# Source: https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge
+
+id,comment_text,toxic,severe_toxic,obscene,threat,insult,identity_hate
+1,"You are an idiot",1,0,0,0,1,0
+2,"This is a great discussion, thanks for sharing!",0,0,0,0,0,0
+3,"Shut up you stupid moron",1,1,0,0,1,0
+4,"I disagree with your point, but I respect your opinion",0,0,0,0,0,0
+5,"Go kill yourself",1,1,0,1,1,0
+6,"This is absolutely terrible work",1,0,0,0,1,0
+7,"Could you please explain your reasoning?",0,0,0,0,0,0
+8,"You're all a bunch of losers",1,0,0,0,1,0
+9,"I appreciate your perspective on this matter",0,0,0,0,0,0
+10,"What a dumb idea",1,0,0,0,1,0
+11,"Thank you for contributing to the discussion",0,0,0,0,0,0
+12,"I'll destroy you if you don't stop",1,1,0,1,1,0
+13,"This makes sense, let me think about it",0,0,0,0,0,0
+14,"You're pathetic and nobody likes you",1,0,0,0,1,0
+15,"Can we have a civil conversation about this?",0,0,0,0,0,0
+16,"Stop being such a crybaby",1,0,0,0,1,0
+17,"I'm learning a lot from this thread",0,0,0,0,0,0
+18,"Delete your account immediately",1,0,0,1,1,0
+19,"What an interesting observation!",0,0,0,0,0,0
+20,"You should be ashamed of yourself",1,0,0,0,1,0
+21,"I'd love to hear more about your experience",0,0,0,0,0,0
+22,"Nobody asked for your stupid opinion",1,0,0,0,1,0
+23,"This is a thoughtful analysis",0,0,0,0,0,0
+24,"Get out of here with that nonsense",1,0,0,0,1,0
+25,"I'm curious about your methodology",0,0,0,0,0,0
+26,"You're wasting everyone's time",1,0,0,0,1,0
+27,"Great job on this project!",0,0,0,0,0,0
+28,"I hope something bad happens to you",1,0,0,1,1,0
+29,"Let's work together to find a solution",0,0,0,0,0,0
+30,"This is complete garbage",1,0,0,0,1,0
+31,"TERE MKC",1,0,0,0,1,1
+32,"BC",1,0,0,0,1,1
+33,"BSDK",1,0,0,0,,1
+34,"TERE MAA chod dunga",1,0,0,0,1,1
+35,"MC",1,0,0,0,1,1
+36,"BC",1,0,0,0,1,1
+37,"BKL",1,0,0,0,1,1
+38,"GANDU",1,0,0,0,1,1
+39,"CHUTIYA",1,0,0,0,1,1
+40,"MADARCHOD",1,0,0,0,1,1
+41,"TERI MAA KI",1,0,0,0,1,1
+42,"TERI BEHEN",1,0,0,0,1,1
+43,"SAALA KAMINA",1,0,0,0,1,1
+44,"APNI AUKAT ME REH",1,0,0,0,1,0
+45,"NIKAL YAHA SE",1,0,0,0,1,0
+46,"TU KYA UKHAD LEGA",1,0,0,1,1,0
+47,"DEKH LUNGA TUJHE",1,0,0,1,1,0
+48,"TERE KO TOD DUNGA",1,1,0,1,1,0
+49,"AUKAT NAHI TERI",1,0,0,0,1,0
+50,"CHAL BHAG",1,0,0,0,1,0
+51,"BHOSDIKE",1,0,0,0,1,1
+52,"R*ND",1,0,0,0,1,1
+53,"CH*TIYA",1,0,0,0,1,1
+54,"G@NDU",1,0,0,0,1,1
+55,"T0RI MAA",1,0,0,0,1,1
+56,"MAD@RCH0D",1,0,0,0,1,1
+57,"TERI BEHEN KI",1,0,0,0,1,1
+58,"SALE HAR@MI",1,0,0,0,1,1
+59,"KAMEENA",1,0,0,0,1,0
+60,"TU MAR JA",1,1,0,1,1,0
+61,"I WILL RUIN YOU",1,0,0,1,1,0
+62,"YOU WILL PAY",1,0,0,1,1,0
+63,"F OFF",1,0,0,0,1,0
+64,"STFU",1,0,0,0,1,0
+65,"DUMB AF",1,0,0,0,1,0
+66,"LOSER",1,0,0,0,1,0
+67,"IDIOT",1,0,0,0,1,0
+68,"JAA NA",1,0,0,0,1,0
+69,"TERI AUKAT KYA HAI",1,0,0,0,1,0
+70,"TU KAAM KA NAHI",1,0,0,0,1,0
+

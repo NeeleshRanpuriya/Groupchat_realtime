@@ -1,0 +1,45 @@
+
+# Polite Rewrites Dataset
+# Professional/polite alternatives for toxic or rude messages
+
+id,original_message,polite_rewrite,improvement_type
+1,"You're an idiot","I respectfully disagree with your approach",tone
+2,"Shut up","I'd appreciate if we could have a constructive discussion",tone
+3,"This is garbage","I think this could be improved in several ways",tone
+4,"Nobody cares","Thank you for sharing, though others may have different priorities",tone
+5,"What a stupid idea","I have some concerns about this approach",tone
+6,"You don't know what you're talking about","Could you provide more context for your perspective?",tone
+7,"This is a waste of time","I'm not sure this is the most efficient approach",tone
+8,"Get lost","I think we should take a break from this discussion",tone
+9,"You're completely wrong","I see it differently, let me explain my viewpoint",tone
+10,"Stop being so annoying","Could we approach this more calmly?",tone
+11,"That makes no sense","Could you help me understand your reasoning?",clarity
+12,"I don't have time for this","I'm currently prioritizing other tasks, can we reschedule?",professionalism
+13,"You never listen","I feel like my concerns aren't being fully addressed",assertiveness
+14,"This always fails","We've encountered this issue before, let's find a lasting solution",problem_solving
+15,"Why are you so dumb?","Would you like me to explain this differently?",empathy
+16,"I hate this","This doesn't align with my preferences",tone
+17,"You're useless","I think we need additional support on this task",constructiveness
+18,"What's wrong with you?","Is everything okay? You seem concerned",empathy
+19,"This is impossible","This presents some significant challenges we need to address",realism
+20,"You're lying","I have information that contradicts this statement",factual
+21,"I don't care what you think","I appreciate your input, though I have a different view",respect
+22,"You're pathetic","I think you're capable of much better work",encouragement
+23,"This is the worst","There's definitely room for improvement here",constructiveness
+24,"Stop wasting my time","I need to focus on other priorities right now",boundary_setting
+25,"You're incompetent","Perhaps some additional training would be helpful",supportiveness
+26,"Nobody asked you","Thank you for volunteering your perspective",inclusiveness
+27,"This is stupid","I'm not convinced this is the best approach",critical_thinking
+28,"You're wrong","I have a different understanding based on the data",evidence_based
+29,"I'm sick of this","I'm feeling frustrated and need to address this concern",emotion_expression
+30,"You always screw up","Let's review what went wrong and prevent future issues",accountability
+31,"Get out of here","I think we need some space to cool down",de_escalation
+32,"You're being ridiculous","Your approach seems unconventional, can you explain?",open_mindedness
+33,"This is a disaster","We're facing serious challenges that need immediate attention",urgency
+34,"You have no idea","I'd be happy to share more context about this",knowledge_sharing
+35,"Stop talking","Could we give others a chance to speak?",inclusiveness
+36,"You're so lazy","I'd like to see more initiative on this project",motivation
+37,"This is unacceptable","This doesn't meet our agreed-upon standards",professionalism
+38,"I hate working with you","I think we have different working styles that we need to align",collaboration
+39,"You're impossible","This collaboration is proving challenging",honesty
+40,"Shut your mouth","Let's take turns speaking so everyone can contribute",fairness
