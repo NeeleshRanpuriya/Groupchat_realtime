@@ -6,12 +6,12 @@ python-multipart==0.0.6
 
 # Database
 sqlalchemy==2.0.25
-psycopg2-binary==2.9.9   # <-- uncommented for PostgreSQL
+# psycopg2-binary==2.9.9
 alembic==1.13.1
 
 # ML / NLP
 transformers==4.36.2
-torch==2.9.0
+torch==2.1.2
 sentencepiece==0.1.99
 accelerate==0.25.0
 
@@ -26,7 +26,7 @@ numpy==1.26.3
 python-dotenv==1.0.0
 
 # CORS
-# python-cors==1.0.0   # <-- REMOVED (this package doesn't exist)
+python-cors==1.0.0
 
 # Async
 aiofiles==23.2.1
