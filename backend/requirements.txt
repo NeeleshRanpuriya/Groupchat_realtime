@@ -19,14 +19,14 @@ accelerate==0.25.0
 openai==1.10.0
 
 # Data processing
-pandas==2.1.4
+pandas==2.2.0
 numpy==1.26.3
 
 # Environment
 python-dotenv==1.0.0
 
 # CORS
-python-cors==1.0.0
+#python-cors==1.0.0
 
 # Async
 aiofiles==23.2.1
