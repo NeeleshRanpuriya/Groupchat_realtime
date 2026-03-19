@@ -15,18 +15,18 @@ logger = logging.getLogger(__name__)
 class ToneAnalyzer:
     """Analyze tone and provide communication coaching"""
     
-   def __init__(self):
-    api_key = os.getenv("OPENAI_API_KEY")
-    if api_key and api_key != "your_openai_api_key_here":
-        try:
+   class ToneAnalyzer:
+    """Analyze tone and provide communication coaching"""
+    
+    def __init__(self):
+        """Initialize OpenAI client"""
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key or api_key == "your_openai_api_key_here":
+            logger.warning("⚠️ OpenAI API key not configured. Tone analysis will use fallback.")
+            self.client = None
+        else:
             self.client = OpenAI(api_key=api_key)
             logger.info("✅ OpenAI client initialized")
-        except Exception as e:
-            logger.error(f"OpenAI init failed: {e}")
-            self.client = None
-    else:
-        logger.warning("⚠️ OpenAI API key not configured. Using fallback.")
-        self.client = None
     
     def analyze_tone(self, text: str, toxicity_score: float = 0.0, intent: str = "neutral") -> Dict:
         """
