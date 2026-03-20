@@ -1,4 +1,3 @@
-
 """
 Tone analysis and coaching using OpenAI
 """
@@ -13,9 +12,6 @@ logger = logging.getLogger(__name__)
 
 
 class ToneAnalyzer:
-    """Analyze tone and provide communication coaching"""
-    
-   class ToneAnalyzer:
     """Analyze tone and provide communication coaching"""
     
     def __init__(self):
