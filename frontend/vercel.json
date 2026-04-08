@@ -1,5 +1,4 @@
 {
-  "projectId": "prj_groupchat_realtime_app",
   "orgId": "team_groupchat",
   "buildCommand": "next build",
   "outputDirectory": ".next",
