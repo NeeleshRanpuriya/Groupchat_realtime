@@ -1,12 +1,12 @@
 
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production'
-const backendOrigin = process.env.BACKEND_ORIGIN || 'https://groupchatrealtime-y26cbnltf4peoc4u3uibjo.streamlit.app'
+const backendOrigin = process.env.BACKEND_ORIGIN || 'https://groupchatrealtime-xqyvkfhbupicrstda7x4gh.streamlit.app'
 const defaultApiUrl = isProd
   ? '/backend'
   : 'http://localhost:8000'
 const defaultWsUrl = isProd
-  ? 'wss://groupchatrealtime-y26cbnltf4peoc4u3uibjo.streamlit.app'
+  ? 'wss://groupchatrealtime-xqyvkfhbupicrstda7x4gh.streamlit.app'
   : 'ws://localhost:8000'
 
 const nextConfig = {
