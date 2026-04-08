@@ -18,7 +18,7 @@ export default function Navbar() {
   const [requestsError, setRequestsError] = useState('')
 
   const API_URL = process.env.NODE_ENV === 'production'
-    ? '/backend'
+    ? '/api/proxy'
     : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000')
 
   // Initialize dark mode
