@@ -60,7 +60,7 @@ function ChatRoomContent() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000'
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/backend'
 
   // Helper to safely get token
   const getToken = () => localStorage.getItem('token')
@@ -156,7 +156,8 @@ function ChatRoomContent() {
   const makeAdmin = useCallback(async (target: string) => {
     const token = getToken();
     try {
-      const url = new URL(`${API_URL}/api/rooms/${encodeURIComponent(room_id)}/make-admin`);
+      const base = API_URL.startsWith('http') ? API_URL : `${window.location.origin}${API_URL}`;
+      const url = new URL(`${base}/api/rooms/${encodeURIComponent(room_id)}/make-admin`);
       url.searchParams.append('target', target);
       const res = await fetch(url, {
         method: 'POST',
@@ -249,7 +250,8 @@ function ChatRoomContent() {
         return
       }
 
-      const url = new URL(`${API_URL}/api/rooms/${encodeURIComponent(room_id)}/pending-requests`);
+      const base = API_URL.startsWith('http') ? API_URL : `${window.location.origin}${API_URL}`;
+      const url = new URL(`${base}/api/rooms/${encodeURIComponent(room_id)}/pending-requests`);
       url.searchParams.append('admin', username);
       fetch(url, {
         headers: { Authorization: `Bearer ${token}` }
@@ -360,7 +362,8 @@ function ChatRoomContent() {
   const approveRequest = useCallback(async (target: string) => {
     const token = getToken();
     try {
-      const url = new URL(`${API_URL}/api/rooms/${encodeURIComponent(room_id)}/approve-request`);
+      const base = API_URL.startsWith('http') ? API_URL : `${window.location.origin}${API_URL}`;
+      const url = new URL(`${base}/api/rooms/${encodeURIComponent(room_id)}/approve-request`);
       url.searchParams.append('admin', username);
       url.searchParams.append('username', target);
       await fetch(url, {
@@ -375,7 +378,8 @@ function ChatRoomContent() {
   const rejectRequest = useCallback(async (target: string) => {
     const token = getToken();
     try {
-      const url = new URL(`${API_URL}/api/rooms/${encodeURIComponent(room_id)}/reject-request`);
+      const base = API_URL.startsWith('http') ? API_URL : `${window.location.origin}${API_URL}`;
+      const url = new URL(`${base}/api/rooms/${encodeURIComponent(room_id)}/reject-request`);
       url.searchParams.append('admin', username);
       url.searchParams.append('username', target);
       await fetch(url, {

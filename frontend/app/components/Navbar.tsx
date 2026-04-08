@@ -17,7 +17,7 @@ export default function Navbar() {
   const [loadingRequests, setLoadingRequests] = useState(false)
   const [requestsError, setRequestsError] = useState('')
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/backend'
 
   // Initialize dark mode
   useEffect(() => {

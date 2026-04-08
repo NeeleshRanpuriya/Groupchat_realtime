@@ -11,7 +11,7 @@ interface JoinRequestPanelProps {
   onReject: (username: string) => void;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '/backend';
 
 export default function JoinRequestPanel({
   roomId,

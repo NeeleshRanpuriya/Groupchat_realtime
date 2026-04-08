@@ -38,7 +38,7 @@ function ProfileContent() {
   const [bio, setBio] = useState('')
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/backend'
 
   // Initialize dark mode from localStorage (without toggle)
   useEffect(() => {
