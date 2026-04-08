@@ -40,6 +40,45 @@ out/
 .env.local
 .env.*.local
 *.env
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python virtual environments
+.venv/
+**/.venv/
+
+# Secrets and local credentials
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.ovpn
+*.kdbx
+*.asc
+*.gpg
+
+# Common secret/credential files
+*secret*
+*secrets*
+*credential*
+*credentials*
+*.token
+*.tokens
+.envrc
+.direnv/
+.npmrc
+.pypirc
+
+# Cloud credentials
+.aws/
+.azure/
+.config/gcloud/
+**/service-account*.json
+**/firebase-adminsdk*.json
 
 # Database
 *.db

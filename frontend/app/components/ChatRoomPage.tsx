@@ -233,7 +233,7 @@ function ChatRoomContent() {
           <AnalysisPanel analysis={currentAnalysis} coaching={currentCoaching} />
       </aside>
 
-      <GroupInfoDrawer roomId={room_id} isOpen={showGroupInfo} onClose={() => setShowGroupInfo(false)} adminUsername={adminName} currentUsername={username} onKick={()=>{}} onLeave={leaveRoom} />
+      <GroupInfoDrawer roomId={room_id} isOpen={showGroupInfo} onClose={() => setShowGroupInfo(false)} currentUsername={username} onKick={()=>{}} onLeave={leaveRoom} />
     </div>
   )
 }
