@@ -16,4 +16,4 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: FRONTEND_URL
-        value: https://groupchat-realtime.vercel.app
+        value: https://groupchat-realtime-app.vercel.app

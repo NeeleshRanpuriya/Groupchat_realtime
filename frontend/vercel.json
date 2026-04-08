@@ -1,9 +1,11 @@
 {
+  "projectId": "prj_groupchat_realtime_app",
+  "orgId": "team_groupchat",
   "buildCommand": "next build",
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "env": {
-    "NEXT_PUBLIC_API_URL": "@next_public_api_url",
-    "NEXT_PUBLIC_WS_URL": "@next_public_ws_url"
+    "NEXT_PUBLIC_API_URL": "https://groupchat-realtime-backend.onrender.com",
+    "NEXT_PUBLIC_WS_URL": "wss://groupchat-realtime-backend.onrender.com"
   }
 }
