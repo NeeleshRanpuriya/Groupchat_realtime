@@ -13,7 +13,6 @@ try:
 except Exception:
     AutoTokenizer = None
     AutoModelForSequenceClassification = None
-import numpy as np
 from typing import Dict, List, Tuple
 import logging
 
@@ -128,7 +127,7 @@ class ToxicityDetector:
             }
 
             # Calculate overall toxicity score (max of all categories)
-            toxicity_score = float(np.max(predictions))
+            toxicity_score = float(max(predictions)) if len(predictions) else 0.0
             is_toxic = toxicity_score >= threshold
 
             # Rule‑based override: if not toxic by model but patterns match, mark as toxic

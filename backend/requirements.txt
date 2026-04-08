@@ -10,23 +10,13 @@ alembic==1.13.1
 psycopg2-binary==2.9.9; python_version < "3.13"
 psycopg[binary]>=3.2.0; python_version >= "3.13"
 
-# ML / NLP
-transformers==4.36.2; python_version < "3.13"
-torch==2.6.0; python_version < "3.13"
-sentencepiece==0.1.99
-accelerate==0.25.0
-
 # OpenAI
 openai==1.10.0
 httpx<0.28
 
-# Data processing
-pandas==2.2.0
-numpy==1.26.3
-
 # Environment
 python-dotenv==1.0.0
-bcrypt==4.0.1
+bcrypt>=4.2.0
 cloudinary==1.36.0
 python-jose==3.3.0
 
