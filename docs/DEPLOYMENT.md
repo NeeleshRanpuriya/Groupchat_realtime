@@ -15,6 +15,18 @@ This guide covers deploying the Real-Time Chat Moderation System to various plat
 
 ## 🚀 Deployment Options
 
+### Important Note About Streamlit Cloud
+
+This repository's backend is a FastAPI server, not a native Streamlit UI app. Streamlit Community Cloud can fail health checks for backend-only apps, especially if startup work is heavy.
+
+If you still test backend deployment on Streamlit Cloud:
+
+- Use `backend/main.py` as the app entrypoint
+- Set `ENABLE_TOXICITY_MODEL=false` to avoid heavy model initialization at boot
+- Keep runtime on Python 3.12 in app settings
+
+For production, deploy backend on Render/Railway/Fly and host the Next.js frontend separately.
+
 ### Option 1: Railway (Recommended for Beginners)
 
 **Pros**: Easy setup, free tier, automatic deployments  

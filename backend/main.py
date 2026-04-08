@@ -27,6 +27,9 @@ from sqlalchemy import func
 import logging
 from sqlalchemy import func  # add this at the top with other imports
 
+# Optional heavy model loading can be toggled for constrained hosts.
+ENABLE_TOXICITY_MODEL = os.getenv("ENABLE_TOXICITY_MODEL", "false").strip().lower() in ("1", "true", "yes", "on")
+
 logger = logging.getLogger(__name__)
 # -------------------- Configuration -------------------
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
@@ -69,16 +72,43 @@ app.add_middleware(
 )
 
 # -------------------- AI Models -------------------
-logger.info("🚀 Initializing AI models...")
+# Keep startup fast: initialize lightweight models lazily on first use.
+logger.info("🚀 Configuring AI model loaders...")
 toxicity_detector = None
-intent_classifier = IntentClassifier()
-tone_analyzer = ToneAnalyzer()
+intent_classifier = None
+tone_analyzer = None
+_toxicity_init_attempted = False
 
-try:
-    toxicity_detector = ToxicityDetector()
-except Exception as e:
-    logger.error(f"Failed to load toxicity detector: {e}")
-    logger.warning("⚠️ Running without toxicity detection")
+
+def get_intent_classifier() -> IntentClassifier:
+    global intent_classifier
+    if intent_classifier is None:
+        intent_classifier = IntentClassifier()
+    return intent_classifier
+
+
+def get_tone_analyzer() -> ToneAnalyzer:
+    global tone_analyzer
+    if tone_analyzer is None:
+        tone_analyzer = ToneAnalyzer()
+    return tone_analyzer
+
+
+def get_toxicity_detector() -> Optional[ToxicityDetector]:
+    global toxicity_detector, _toxicity_init_attempted
+    if toxicity_detector is not None:
+        return toxicity_detector
+    if _toxicity_init_attempted or not ENABLE_TOXICITY_MODEL:
+        return None
+
+    _toxicity_init_attempted = True
+    try:
+        toxicity_detector = ToxicityDetector()
+        return toxicity_detector
+    except Exception as e:
+        logger.error(f"Failed to load toxicity detector: {e}")
+        logger.warning("⚠️ Running without toxicity detection")
+        return None
 
 # -------------------- Auth Utilities (direct bcrypt) -------------------
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -523,19 +553,23 @@ manager = ConnectionManager()
 # -------------------- Helper Functions -------------------
 async def process_message(message: str, username: str, room_id: str, db: Session, file_url: Optional[str] = None, reply_to_id: Optional[int] = None) -> dict:
     logger.info(f"Processing message from {username} in room {room_id}: {message[:50]}...")
+    detector = get_toxicity_detector()
+    local_intent_classifier = get_intent_classifier()
+    local_tone_analyzer = get_tone_analyzer()
+
     toxicity_result = {"toxicity_score": 0.0, "is_toxic": False, "categories": {}}
-    if toxicity_detector:
+    if detector:
         try:
-            toxicity_result = toxicity_detector.predict(message)
+            toxicity_result = detector.predict(message)
         except Exception as e:
             logger.error(f"Toxicity detection failed: {e}")
-    intent, intent_confidence = intent_classifier.classify(message)
-    tone_result = tone_analyzer.analyze_tone(message, toxicity_result["toxicity_score"], intent)
+    intent, intent_confidence = local_intent_classifier.classify(message)
+    tone_result = local_tone_analyzer.analyze_tone(message, toxicity_result["toxicity_score"], intent)
     coaching_message = None
     suggested_rewrite = None
     if toxicity_result["toxicity_score"] > 0.3 or tone_result["tone"] in ["rude", "aggressive"]:
-        coaching_message = tone_analyzer.generate_coaching(message, tone_result["tone"], toxicity_result["toxicity_score"], intent)
-        suggested_rewrite = tone_analyzer.suggest_rewrite(message, tone_result["tone"], toxicity_result["toxicity_score"])
+        coaching_message = local_tone_analyzer.generate_coaching(message, tone_result["tone"], toxicity_result["toxicity_score"], intent)
+        suggested_rewrite = local_tone_analyzer.suggest_rewrite(message, tone_result["tone"], toxicity_result["toxicity_score"])
     chat_message = ChatMessage(
         username=username,
         message=message,
@@ -574,12 +608,12 @@ async def process_message(message: str, username: str, room_id: str, db: Session
             "toxicity": {
                 "score": round(toxicity_result["toxicity_score"], 3),
                 "is_toxic": toxicity_result["is_toxic"],
-                "top_categories": toxicity_detector.get_top_categories(toxicity_result.get("categories", {})) if toxicity_detector else []
+                "top_categories": detector.get_top_categories(toxicity_result.get("categories", {})) if detector else []
             },
             "intent": {
                 "type": intent,
                 "confidence": round(intent_confidence, 3),
-                "explanation": intent_classifier.get_intent_explanation(intent)
+                "explanation": local_intent_classifier.get_intent_explanation(intent)
             },
             "tone": {
                 "type": tone_result["tone"],
@@ -618,12 +652,14 @@ async def root():
 
 @app.get("/api/health")
 async def health_check():
+    local_tone_analyzer = get_tone_analyzer()
     return {
         "status": "healthy",
         "models": {
             "toxicity_detector": toxicity_detector is not None,
+            "toxicity_enabled": ENABLE_TOXICITY_MODEL,
             "intent_classifier": True,
-            "tone_analyzer": tone_analyzer.client is not None
+            "tone_analyzer": local_tone_analyzer.client is not None
         },
         "connections": sum(len(v) for v in manager.rooms.values()),
         "rooms": list(manager.rooms.keys()),
@@ -802,4 +838,5 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str, username: str, 
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv("PORT", 8000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True, log_level="info")
+    reload_enabled = os.getenv("UVICORN_RELOAD", "false").strip().lower() in ("1", "true", "yes", "on")
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=reload_enabled, log_level="info")
