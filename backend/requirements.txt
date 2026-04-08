@@ -7,11 +7,12 @@ python-multipart==0.0.6
 # Database
 sqlalchemy==2.0.25
 alembic==1.13.1
-psycopg2-binary==2.9.9
+psycopg2-binary==2.9.9; python_version < "3.13"
+psycopg[binary]>=3.2.0; python_version >= "3.13"
 
 # ML / NLP
-transformers==4.36.2
-torch==2.6.0
+transformers==4.36.2; python_version < "3.13"
+torch==2.6.0; python_version < "3.13"
 sentencepiece==0.1.99
 accelerate==0.25.0
 

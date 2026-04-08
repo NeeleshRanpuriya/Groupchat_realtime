@@ -3,8 +3,16 @@ Toxicity detection using HuggingFace transformers with rule‑based fallback for
 """
 
 import re
-import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+try:
+    import torch
+except Exception:
+    torch = None
+
+try:
+    from transformers import AutoTokenizer, AutoModelForSequenceClassification
+except Exception:
+    AutoTokenizer = None
+    AutoModelForSequenceClassification = None
 import numpy as np
 from typing import Dict, List, Tuple
 import logging
@@ -24,6 +32,13 @@ class ToxicityDetector:
         """
         logger.info(f"Loading toxicity model: {model_name}")
         self.model_name = model_name
+
+        if torch is None or AutoTokenizer is None or AutoModelForSequenceClassification is None:
+            raise RuntimeError(
+                "Toxicity model dependencies are not available. "
+                "Install torch and transformers on a supported Python version."
+            )
+
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         
         try:
