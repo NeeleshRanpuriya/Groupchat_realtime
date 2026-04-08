@@ -666,6 +666,11 @@ async def health_check():
         "timestamp": datetime.now().isoformat()
     }
 
+
+@app.get("/healthz")
+async def streamlit_healthz():
+    return {"status": "ok"}
+
 @app.post("/api/analyze")
 async def analyze_message(
     message: str,
