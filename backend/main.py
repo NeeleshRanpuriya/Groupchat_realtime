@@ -59,13 +59,29 @@ app = FastAPI(
     version="2.0.0"
 )
 
+def get_allowed_origins() -> List[str]:
+    """Build a deterministic CORS allowlist from env + known local/prod domains."""
+    origins = {
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://groupchat-realtime.vercel.app",
+    }
+
+    # FRONTEND_URL can contain one or many comma-separated origins.
+    env_origins = os.getenv("FRONTEND_URL", "")
+    for origin in env_origins.split(","):
+        origin = origin.strip()
+        if origin:
+            origins.add(origin.rstrip("/"))
+
+    return sorted(origins)
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-    os.getenv("FRONTEND_URL", "http://localhost:3000"),
-    "https://groupchat-realtime.vercel.app",  # tumhara frontend URL
-],
+    allow_origins=get_allowed_origins(),
+    # Allow Vercel preview/prod deployments without code changes.
+    allow_origin_regex=r"https://.*\.vercel\.app$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
