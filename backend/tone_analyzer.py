@@ -22,8 +22,13 @@ class ToneAnalyzer:
             logger.warning("⚠️ OpenAI API key not configured. Tone analysis will use fallback.")
             self.client = None
         else:
-            self.client = OpenAI(api_key=api_key)
-            logger.info("✅ OpenAI client initialized")
+            try:
+                self.client = OpenAI(api_key=api_key)
+                logger.info("✅ OpenAI client initialized")
+            except Exception as e:
+                logger.error(f"OpenAI client initialization failed: {e}")
+                logger.warning("⚠️ Falling back to rule-based tone analysis.")
+                self.client = None
     
     def analyze_tone(self, text: str, toxicity_score: float = 0.0, intent: str = "neutral") -> Dict:
         """
