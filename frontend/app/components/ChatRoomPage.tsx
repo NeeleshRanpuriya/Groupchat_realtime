@@ -61,7 +61,9 @@ function ChatRoomContent() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000'
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/backend'
+  const API_URL = process.env.NODE_ENV === 'production'
+    ? '/backend'
+    : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000')
 
   // --- DARK MODE FIX ---
   useEffect(() => {

@@ -18,7 +18,9 @@ function HomeContent() {
   const [popularRooms] = useState(['general', 'gaming', 'tech', 'music'])
   const [darkMode, setDarkMode] = useState(false)
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || '/backend'
+  const API_URL = process.env.NODE_ENV === 'production'
+    ? '/backend'
+    : (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000')
 
   // Initialize dark mode
   useEffect(() => {
