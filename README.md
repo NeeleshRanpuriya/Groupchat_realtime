@@ -1,8 +1,7 @@
 # Group Chat Realtime
 
 Real-time group chat with AI-assisted moderation. The app combines a FastAPI backend, a Next.js frontend, WebSocket chat, authentication, and message analysis for toxicity, intent, and tone.
-
-
+![Screenshot 2026-04-20 172313](homepage.png)
 
 ## What this project does
 
@@ -83,6 +82,48 @@ npm run build
 npm start
 ```
 
+---
+
+## Screenshots
+
+Quick visual overview — open this README on GitHub for best image quality.
+
+- **Primary UI captures**
+
+![Home page](screenshots/HOME_PAGE.png)  
+**Home page**
+
+![Chat interface](screenshots/Chat_Interface.png)  
+**Chat interface**
+
+![Real-time analysis panel](screenshots/Real_Time_Analysis_Panel.png)  
+**Real-time analysis panel**
+
+![RealTime Analysis Panel (alt)](screenshots/RealTime_Analysis_Panel.png)  
+**Analysis panel (alt view)**
+
+- **Additional captures (screenchots/)**
+
+![Screenshot 2026-04-20 172313](screenchots/Screenshot%202026-04-20%20172313.png)  
+![Screenshot 2026-04-20 172718](screenchots/Screenshot%202026-04-20%20172718.png)  
+![Screenshot 2026-04-20 172914](screenchots/Screenshot%202026-04-20%20172914.png)  
+![Screenshot 2026-04-20 210512](screenchots/Screenshot%202026-04-20%20210512.png)  
+![Screenshot 2026-04-20 210617](screenchots/Screenshot%202026-04-20%20210617.png)  
+![Screenshot 2026-04-20 210644](screenchots/Screenshot%202026-04-20%20210644.png)  
+![Screenshot 2026-04-20 210657](screenchots/Screenshot%202026-04-20%20210657.png)  
+![Screenshot 2026-04-20 210720](screenchots/Screenshot%202026-04-20%20210720.png)  
+![Screenshot 2026-04-20 210750](screenchots/Screenshot%202026-04-20%20210750.png)  
+![Screenshot 2026-04-20 210808](screenchots/Screenshot%202026-04-20%20210808.png)  
+![Screenshot 2026-04-20 210835](screenchots/Screenshot%202026-04-20%20210835.png)  
+![Screenshot 2026-04-20 210855](screenchots/Screenshot%202026-04-20%20210855.png)
+
+---
+
+## Contact
+
+Please provide the contact details you'd like to display (name, email, link to portfolio/GitHub, or phone). I'll insert them here formatted for sharing.
+
+
 ## Deployment Notes
 
 The repo includes deployment guidance in `docs/DEPLOYMENT.md`. For production, make sure to:
@@ -93,108 +134,49 @@ The repo includes deployment guidance in `docs/DEPLOYMENT.md`. For production, m
 - Verify `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_WS_URL`
 - Avoid loading heavy ML components at startup if your hosting plan has tight memory limits
 
-### Railway Deployment Quick Start
+Real-time group chat with AI-assisted moderation built with a FastAPI backend and a Next.js frontend. It delivers low-latency messaging, message-level moderation signals (toxicity, intent, tone), coaching rewrites, and analytics-ready persistence.
 
-Use Railway for the backend, and keep the Next.js frontend on Vercel or another static/Node host.
+---
 
-Backend service settings:
+## Table of Contents
 
-- Root Directory: `backend`
-- Build Command: `python -m pip install -r requirements.txt`
-- Start Command: `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
+- Overview
+- Features
+- How it works
+- Technologies
+- Screenshots
+- Installation
+- Deployment notes
+- Future enhancements
+- Developer / Contact
+- License
 
-If Railway ignores the root directory, set the commands as:
+---
 
-- Build Command: `cd backend && python -m pip install -r requirements.txt`
-- Start Command: `cd backend && python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
+## Overview
 
-Recommended Railway environment variables:
+`Group Chat Realtime` is a full-stack real-time chat application that combines WebSocket-based messaging with an AI moderation pipeline. Messages are analyzed for toxicity, intent, and tone; moderation signals and optional coaching rewrites are persisted alongside the message for transparency and analytics.
 
-- `DATABASE_URL` = PostgreSQL connection string from Railway
-- `SECRET_KEY` = strong random secret
-- `ENABLE_TOXICITY_MODEL` = `false`
-- `FRONTEND_URL` = your deployed frontend URL
-- `OPENAI_API_KEY` = optional, if you use OpenAI features
+## Features
 
-After backend deploys, set your frontend environment variables to the Railway backend URL:
+- **Real-time chat:** room-based WebSocket channels for low-latency messaging.
+- **Authentication:** JWT-based auth for API and WebSocket access.
+- **AI moderation:** toxicity detector, intent classifier, tone analyzer, and optional coaching/rewrite generation.
+- **Message actions:** edit, pin, reply, react with emojis.
+- **Room administration:** join/leave requests, pinned messages, user lists.
+- **Persistence:** SQLAlchemy-backed database stores canonical moderation records for audit and analytics.
 
-- `NEXT_PUBLIC_API_URL` = `https://<your-railway-backend-domain>`
-- `NEXT_PUBLIC_WS_URL` = `wss://<your-railway-backend-domain>`
+## How it works
 
-## API Documentation
+*** End Patch
+2. Backend normalizes the text and forwards it to the moderation pipeline.
 
-See `docs/API.md` for endpoint examples and response shapes.
+3. Moderation modules return toxicity score, intent label, and tone analysis.
 
-## Notes
+4. If needed, a coaching message or suggested rewrite is generated.
 
-- The backend is built around FastAPI, SQLAlchemy, JWT auth, and WebSockets.
-- The frontend uses the Next.js App Router and Tailwind CSS.
-- Some moderation components are optional and may fall back to lighter behavior if model loading fails.
+5. Structured message object (message + moderation metadata) is saved to the database.
 
-## Featured Projects
+6. Enriched payload is broadcast to room participants.
 
-### 1. ShopWave - Full Stack eCommerce Platform
-
-A complete eCommerce platform with user shopping experience and admin management system.
-
-Tech Stack:
-- React.js
-- Node.js
-- Express.js
-- PostgreSQL
-- Stripe
-
-Live Demo: Add project link
-GitHub: Add GitHub link
-
-### 2. Group Chat Realtime
-
-Real-time chat application with secure authentication and AI-powered moderation.
-
-Tech Stack:
-- Next.js
-- FastAPI
-- WebSocket
-- Python
-- PostgreSQL
-
-Live Demo: Add project link
-GitHub: Add GitHub link
-
-### 3. Fake News Detection System
-
-Machine learning based web application that detects fake news content.
-
-Tech Stack:
-- Python
-- Scikit-learn
-- NLP
-
-Live Demo: Add project link
-GitHub: Add GitHub link
-
-## Screenshots
-
-- **Primary UI captures**
-
-![Home page](screenshots/HOME_PAGE.png)
-![Chat interface](screenshots/Chat_Interface.png)
-![Real-time analysis panel](screenshots/Real_Time_Analysis_Panel.png)
-![RealTime Analysis Panel (alt)](screenshots/RealTime_Analysis_Panel.png)
-
-- **Additional captures (screenchots/)**
-
-![Screenshot 2026-04-20 172313](screenchots/Screenshot%202026-04-20%20172313.png)
-![Screenshot 2026-04-20 172718](screenchots/Screenshot%202026-04-20%20172718.png)
-![Screenshot 2026-04-20 172914](screenchots/Screenshot%202026-04-20%20172914.png)
-![Screenshot 2026-04-20 210512](screenchots/Screenshot%202026-04-20%20210512.png)
-![Screenshot 2026-04-20 210617](screenchots/Screenshot%202026-04-20%20210617.png)
-![Screenshot 2026-04-20 210644](screenchots/Screenshot%202026-04-20%20210644.png)
-![Screenshot 2026-04-20 210657](screenchots/Screenshot%202026-04-20%20210657.png)
-![Screenshot 2026-04-20 210720](screenchots/Screenshot%202026-04-20%20210720.png)
-![Screenshot 2026-04-20 210750](screenchots/Screenshot%202026-04-20%20210750.png)
-![Screenshot 2026-04-20 210808](screenchots/Screenshot%202026-04-20%20210808.png)
-![Screenshot 2026-04-20 210835](screenchots/Screenshot%202026-04-20%20210835.png)
-![Screenshot 2026-04-20 210855](screenchots/Screenshot%202026-04-20%20210855.png)
-
-> Note: Images are referenced from the repository paths `screenshots/` and `screenchots/`.
+7. Analytics endpoints can consume persisted records for dashboards and reports.
