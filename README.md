@@ -116,7 +116,11 @@ Quick visual overview — open this README on GitHub for best image quality.
 
 ## Contact
 
-Please provide the contact details you'd like to display (name, email, link to portfolio/GitHub, or phone). I'll insert them here formatted for sharing.
+- **Name:** Neelesh Ranpuriya
+- **Email:** Neeleshranpuriya@gmail.com
+- **LinkedIn:** https://linkedin.com/in/neelesh-ranpuriya-0920512b2
+- **GitHub:** https://github.com/NeeleshRanpuriya
+- **Portfolio:** https://neelesh-ranpuriya.vercel.app/
 
 
 ## Deployment Notes
