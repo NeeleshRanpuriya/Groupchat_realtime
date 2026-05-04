@@ -106,6 +106,34 @@ The repo includes deployment guidance in `docs/DEPLOYMENT.md`. For production, m
 - Verify `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_WS_URL`
 - Avoid loading heavy ML components at startup if your hosting plan has tight memory limits
 
+### Railway Deployment Quick Start
+
+Use Railway for the backend, and keep the Next.js frontend on Vercel or another static/Node host.
+
+Backend service settings:
+
+- Root Directory: `backend`
+- Build Command: `python -m pip install -r requirements.txt`
+- Start Command: `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
+
+If Railway ignores the root directory, set the commands as:
+
+- Build Command: `cd backend && python -m pip install -r requirements.txt`
+- Start Command: `cd backend && python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
+
+Recommended Railway environment variables:
+
+- `DATABASE_URL` = PostgreSQL connection string from Railway
+- `SECRET_KEY` = strong random secret
+- `ENABLE_TOXICITY_MODEL` = `false`
+- `FRONTEND_URL` = your deployed frontend URL
+- `OPENAI_API_KEY` = optional, if you use OpenAI features
+
+After backend deploys, set your frontend environment variables to the Railway backend URL:
+
+- `NEXT_PUBLIC_API_URL` = `https://<your-railway-backend-domain>`
+- `NEXT_PUBLIC_WS_URL` = `wss://<your-railway-backend-domain>`
+
 ## API Documentation
 
 See `docs/API.md` for endpoint examples and response shapes.
@@ -115,3 +143,71 @@ See `docs/API.md` for endpoint examples and response shapes.
 - The backend is built around FastAPI, SQLAlchemy, JWT auth, and WebSockets.
 - The frontend uses the Next.js App Router and Tailwind CSS.
 - Some moderation components are optional and may fall back to lighter behavior if model loading fails.
+
+## Featured Projects
+
+### 1. ShopWave - Full Stack eCommerce Platform
+
+A complete eCommerce platform with user shopping experience and admin management system.
+
+Tech Stack:
+- React.js
+- Node.js
+- Express.js
+- PostgreSQL
+- Stripe
+
+Live Demo: Add project link
+GitHub: Add GitHub link
+
+### 2. Group Chat Realtime
+
+Real-time chat application with secure authentication and AI-powered moderation.
+
+Tech Stack:
+- Next.js
+- FastAPI
+- WebSocket
+- Python
+- PostgreSQL
+
+Live Demo: Add project link
+GitHub: Add GitHub link
+
+### 3. Fake News Detection System
+
+Machine learning based web application that detects fake news content.
+
+Tech Stack:
+- Python
+- Scikit-learn
+- NLP
+
+Live Demo: Add project link
+GitHub: Add GitHub link
+
+## Screenshots
+
+- **Primary UI captures**
+
+![Home page](screenshots/HOME_PAGE.png)
+![Chat interface](screenshots/Chat_Interface.png)
+![Real-time analysis panel](screenshots/Real_Time_Analysis_Panel.png)
+![RealTime Analysis Panel (alt)](screenshots/RealTime_Analysis_Panel.png)
+
+- **Additional captures (screenchots/)**
+
+![Screenshot 2026-04-20 172313](screenchots/Screenshot%202026-04-20%20172313.png)
+![Screenshot 2026-04-20 172718](screenchots/Screenshot%202026-04-20%20172718.png)
+![Screenshot 2026-04-20 172914](screenchots/Screenshot%202026-04-20%20172914.png)
+![Screenshot 2026-04-20 210512](screenchots/Screenshot%202026-04-20%20210512.png)
+![Screenshot 2026-04-20 210617](screenchots/Screenshot%202026-04-20%20210617.png)
+![Screenshot 2026-04-20 210644](screenchots/Screenshot%202026-04-20%20210644.png)
+![Screenshot 2026-04-20 210657](screenchots/Screenshot%202026-04-20%20210657.png)
+![Screenshot 2026-04-20 210720](screenchots/Screenshot%202026-04-20%20210720.png)
+![Screenshot 2026-04-20 210750](screenchots/Screenshot%202026-04-20%20210750.png)
+![Screenshot 2026-04-20 210808](screenchots/Screenshot%202026-04-20%20210808.png)
+![Screenshot 2026-04-20 210835](screenchots/Screenshot%202026-04-20%20210835.png)
+![Screenshot 2026-04-20 210855](screenchots/Screenshot%202026-04-20%20210855.png)
+
+> Note: Images are referenced from the repository paths `screenshots/` and `screenchots/`.

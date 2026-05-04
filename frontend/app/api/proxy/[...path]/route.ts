@@ -9,7 +9,11 @@ function buildTargetUrl(path: string[], req: NextRequest): string {
   return `${cleanOrigin}/${cleanPath}${query}`
 }
 
-async function proxy(req: NextRequest, params: { path: string[] }) {
+type RouteParams = Promise<{ path: string[] }>
+
+async function proxy(req: NextRequest, paramsPromise: RouteParams) {
+  const params = await paramsPromise
+
   if (!params.path?.length) {
     return new Response('Missing proxy path', { status: 400 })
   }
@@ -35,26 +39,26 @@ async function proxy(req: NextRequest, params: { path: string[] }) {
   })
 }
 
-export async function GET(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function GET(req: NextRequest, { params }: { params: RouteParams }) {
   return proxy(req, params)
 }
 
-export async function POST(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function POST(req: NextRequest, { params }: { params: RouteParams }) {
   return proxy(req, params)
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function PUT(req: NextRequest, { params }: { params: RouteParams }) {
   return proxy(req, params)
 }
 
-export async function PATCH(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function PATCH(req: NextRequest, { params }: { params: RouteParams }) {
   return proxy(req, params)
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function DELETE(req: NextRequest, { params }: { params: RouteParams }) {
   return proxy(req, params)
 }
 
-export async function OPTIONS(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function OPTIONS(req: NextRequest, { params }: { params: RouteParams }) {
   return proxy(req, params)
 }
