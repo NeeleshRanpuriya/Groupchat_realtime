@@ -2,6 +2,8 @@
 
 Real-time group chat with AI-assisted moderation. The app combines a FastAPI backend, a Next.js frontend, WebSocket chat, authentication, and message analysis for toxicity, intent, and tone.
 
+
+
 ## What this project does
 
 - Real-time chat rooms with live messaging
@@ -15,22 +17,7 @@ Real-time group chat with AI-assisted moderation. The app combines a FastAPI bac
 - `backend/` FastAPI application, models, ML helpers, and database setup
 - `frontend/` Next.js application and UI components
 - `datasets/` training and reference data used by moderation models
-- `docs/` API and deployment documentation
-- `screenshots/` product screenshots and UI captures
-
-## Prerequisites
-
-- Python 3.10+ for the backend
-- Node.js 18+ for the frontend
-- A database, either SQLite for local development or PostgreSQL for production
-- Optional: Cloudinary credentials for uploads
-- Optional: OpenAI API key if you want to use related AI features
-
-## Backend Setup
-
-1. Create and activate a virtual environment in `backend/`.
-2. Install dependencies.
-3. Copy `backend/.env.example` to `backend/.env` and update the values for your machine.
+ 
 4. Start the API server.
 
 Example:
