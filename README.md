@@ -95,9 +95,6 @@ Quick visual overview — open this README on GitHub for best image quality.
 ![Home page](screenchots/Homepage.png)  
 **Home page**
 
-![Login page](screenchots/Loginpage.png)  
-**Login page**
-
 ![Chat interface](screenchots/ChatInterface.png)  
 **Chat interface**
 
