@@ -1,7 +1,9 @@
 # Group Chat Realtime
 
+![Home page](screenchots/Homepage.png)
+
+
 Real-time group chat with AI-assisted moderation. The app combines a FastAPI backend, a Next.js frontend, WebSocket chat, authentication, and message analysis for toxicity, intent, and tone.
-![Screenshot 2026-04-20 172313](homepage.png)
 
 ## What this project does
 
@@ -90,29 +92,25 @@ Quick visual overview — open this README on GitHub for best image quality.
 
 - **Primary UI captures**
 
-![Home page](screenshots/HOME_PAGE.png)  
+![Home page](screenchots/Homepage.png)  
 **Home page**
 
-![Chat interface](screenshots/Chat_Interface.png)  
+![Login page](screenchots/Loginpage.png)  
+**Login page**
+
+![Chat interface](screenchots/ChatInterface.png)  
 **Chat interface**
 
-![Real-time analysis panel](screenshots/Real_Time_Analysis_Panel.png)  
-**Real-time analysis panel**
-
-![RealTime Analysis Panel (alt)](screenshots/RealTime_Analysis_Panel.png)  
-**Analysis panel (alt view)**
+![Dashboard](screenchots/Dashboard.png)  
+**Dashboard**
 
 - **Additional captures (screenchots/)**
 
-![Screenshot 2026-04-20 172313](screenchots/Screenshot%202026-04-20%20172313.png)  
-![Screenshot 2026-04-20 172718](screenchots/Screenshot%202026-04-20%20172718.png)  
 ![Screenshot 2026-04-20 172914](screenchots/Screenshot%202026-04-20%20172914.png)  
-![Screenshot 2026-04-20 210512](screenchots/Screenshot%202026-04-20%20210512.png)  
 ![Screenshot 2026-04-20 210617](screenchots/Screenshot%202026-04-20%20210617.png)  
 ![Screenshot 2026-04-20 210644](screenchots/Screenshot%202026-04-20%20210644.png)  
 ![Screenshot 2026-04-20 210657](screenchots/Screenshot%202026-04-20%20210657.png)  
 ![Screenshot 2026-04-20 210720](screenchots/Screenshot%202026-04-20%20210720.png)  
-![Screenshot 2026-04-20 210750](screenchots/Screenshot%202026-04-20%20210750.png)  
 ![Screenshot 2026-04-20 210808](screenchots/Screenshot%202026-04-20%20210808.png)  
 ![Screenshot 2026-04-20 210835](screenchots/Screenshot%202026-04-20%20210835.png)  
 ![Screenshot 2026-04-20 210855](screenchots/Screenshot%202026-04-20%20210855.png)
